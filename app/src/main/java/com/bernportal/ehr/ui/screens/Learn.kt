@@ -30,6 +30,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.bernportal.ehr.data.Lesson
+import com.bernportal.ehr.data.db.pct
 import com.bernportal.ehr.ui.LocalNav
 import com.bernportal.ehr.ui.LocalVm
 import com.bernportal.ehr.ui.components.*

@@ -17,7 +17,9 @@ import kotlinx.coroutines.flow.Flow
 @Entity data class Attempt(
     @PrimaryKey(autoGenerate = true) val id: Long = 0, val scope: String, val title: String, val score: Int, val total: Int,
     val at: Long, val breakdown: String = "", val minutes: Int = 0
-) { val pct get() = if (total == 0) 0 else score * 100 / total }
+)
+
+val Attempt.pct: Int get() = if (total == 0) 0 else score * 100 / total
 @Entity data class LabResult(@PrimaryKey val labId: String, val score: Int, val hintsUsed: Int, val completedAt: Long)
 @Entity data class ProjectState(
     @PrimaryKey val projectId: String, val checked: String = "", val notes: String = "", val rubric: String = "",

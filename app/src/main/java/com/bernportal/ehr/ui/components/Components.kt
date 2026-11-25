@@ -179,9 +179,10 @@ fun Glossy3DIcon(icon: ImageVector, colors: List<Color>, size: Dp = 56.dp, conte
         contentAlignment = Alignment.Center
     ) {
         Canvas(Modifier.fillMaxSize()) {
-            drawRoundRect(Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.45f), Color.Transparent), 0f, size.height * 0.55f),
-                topLeft = Offset(size.width * 0.08f, size.height * 0.06f), size = Size(size.width * 0.84f, size.height * 0.42f),
-                cornerRadius = CornerRadius(size.width * 0.22f))
+            val w = this.size.width; val h = this.size.height
+            drawRoundRect(Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.45f), Color.Transparent), 0f, h * 0.55f),
+                topLeft = Offset(w * 0.08f, h * 0.06f), size = Size(w * 0.84f, h * 0.42f),
+                cornerRadius = CornerRadius(w * 0.22f))
         }
         Icon(icon, null, tint = Color.White, modifier = Modifier.size(size * 0.52f).graphicsLayer { shadowElevation = 6f })
     }

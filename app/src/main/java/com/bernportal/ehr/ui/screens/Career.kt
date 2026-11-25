@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.bernportal.ehr.data.InterviewQ
+import com.bernportal.ehr.data.db.pct
 import com.bernportal.ehr.ui.LocalNav
 import com.bernportal.ehr.ui.LocalVm
 import com.bernportal.ehr.ui.components.*

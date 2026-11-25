@@ -128,6 +128,7 @@ fun IntroScreen(onDone: () -> Unit) {
     ) {
         val w = constraints.maxWidth.toFloat()
         val emblemWidth = (maxWidth * 0.72f).coerceAtMost(360.dp)
+        val narrow = maxWidth < 380.dp
 
         // ---------- Starfield warp + perspective grid ----------
         Canvas(Modifier.fillMaxSize()) {
@@ -217,7 +218,7 @@ fun IntroScreen(onDone: () -> Unit) {
                         ch.toString(),
                         style = TextStyle(
                             brush = Brush.verticalGradient(listOf(Color(0xFFFFF1B8), Brand.Gold, Brand.GoldDeep)),
-                            fontSize = if (maxWidth < 380.dp) 15.sp else 18.sp, fontWeight = FontWeight.Black, letterSpacing = 1.5.sp,
+                            fontSize = if (narrow) 15.sp else 18.sp, fontWeight = FontWeight.Black, letterSpacing = 1.5.sp,
                             shadow = Shadow(Brand.Gold.copy(alpha = 0.6f), Offset(0f, 0f), 14f)
                         ),
                         modifier = Modifier.graphicsLayer {
@@ -243,7 +244,7 @@ fun IntroScreen(onDone: () -> Unit) {
                 textAlign = TextAlign.Center,
                 style = TextStyle(
                     brush = Brush.horizontalGradient(listOf(Brand.Cyan, Color.White, Brand.Violet)),
-                    fontSize = if (maxWidth < 380.dp) 25.sp else 30.sp, fontWeight = FontWeight.Black, fontFamily = FontFamily.SansSerif,
+                    fontSize = if (narrow) 25.sp else 30.sp, fontWeight = FontWeight.Black, fontFamily = FontFamily.SansSerif,
                     shadow = Shadow(Brand.Cyan.copy(alpha = 0.8f), Offset(0f, 0f), 22f), letterSpacing = 1.sp
                 ),
                 modifier = Modifier.graphicsLayer { alpha = if (title > 0f) 1f else 0f }

@@ -22,6 +22,7 @@ import com.bernportal.ehr.data.db.ProjectState
 import com.bernportal.ehr.data.db.Report
 import com.bernportal.ehr.data.db.StudyDay
 import com.bernportal.ehr.data.db.Viewed
+import com.bernportal.ehr.data.db.pct
 import com.bernportal.ehr.util.Reminders
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
