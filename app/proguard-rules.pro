@@ -1,0 +1,2 @@
+-keep class com.bernportal.ehr.data.db.** { *; }
+-dontwarn org.jetbrains.annotations.**

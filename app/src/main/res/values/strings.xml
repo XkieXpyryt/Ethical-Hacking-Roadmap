@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Ethical Hacking Roadmap</string>
+    <string name="company">Bernportal System Innovations</string>
+    <string name="reminder_channel">Learning reminders</string>
+</resources>
