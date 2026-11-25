@@ -210,25 +210,32 @@ fun IntroScreen(onDone: () -> Unit) {
             Spacer(Modifier.height(18.dp))
 
             // ---------- Company title: 3D letter flip ----------
-            val companyText = "BERNPORTAL SYSTEM INNOVATIONS"
-            Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
-                companyText.forEachIndexed { i, ch ->
-                    val f = easeOut(seg(company * companyText.length * 1.6f, i.toFloat(), i + 3f))
-                    Text(
-                        ch.toString(),
-                        style = TextStyle(
-                            brush = Brush.verticalGradient(listOf(Color(0xFFFFF1B8), Brand.Gold, Brand.GoldDeep)),
-                            fontSize = if (narrow) 15.sp else 18.sp, fontWeight = FontWeight.Black, letterSpacing = 1.5.sp,
-                            shadow = Shadow(Brand.Gold.copy(alpha = 0.6f), Offset(0f, 0f), 14f)
-                        ),
-                        modifier = Modifier.graphicsLayer {
-                            alpha = f
-                            if (motion.effects3d) rotationX = 90f * (1 - f)
-                            translationY = (1 - f) * 24f
-                            cameraDistance = 8f * density
-                        }
-                    )
+            val companyLines = listOf("BERNPORTAL", "SYSTEM INNOVATIONS")
+            var offsetIdx = 0
+            companyLines.forEach { lineText ->
+                val base = offsetIdx
+                Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
+                    lineText.forEachIndexed { j, ch ->
+                        val i = base + j
+                        val f = easeOut(seg(company * 29 * 1.6f, i.toFloat(), i + 3f))
+                        Text(
+                            ch.toString(),
+                            style = TextStyle(
+                                brush = Brush.verticalGradient(listOf(Color(0xFFFFF1B8), Brand.Gold, Brand.GoldDeep)),
+                                fontSize = if (base == 0) (if (narrow) 26.sp else 30.sp) else (if (narrow) 15.sp else 18.sp),
+                                fontWeight = FontWeight.Black, letterSpacing = if (base == 0) 3.sp else 2.5.sp,
+                                shadow = Shadow(Brand.Gold.copy(alpha = 0.6f), Offset(0f, 0f), 14f)
+                            ),
+                            modifier = Modifier.graphicsLayer {
+                                alpha = f
+                                if (motion.effects3d) rotationX = 90f * (1 - f)
+                                translationY = (1 - f) * 24f
+                                cameraDistance = 8f * density
+                            }
+                        )
+                    }
                 }
+                offsetIdx += lineText.length
             }
             Box(Modifier.padding(top = 6.dp).height(2.dp).fillMaxWidth(0.6f * easeOut(company)).background(Brush.horizontalGradient(listOf(Color.Transparent, Brand.Gold, Color.Transparent))))
             Text("presents", color = Brand.Muted, fontSize = 13.sp, letterSpacing = 4.sp, modifier = Modifier.padding(top = 8.dp).graphicsLayer { alpha = presents })

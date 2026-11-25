@@ -98,14 +98,11 @@ fun paletteFor(i: Int): List<Color> = listOf(
     listOf(Color(0xFFB45309), Color(0xFFFBBF24)), listOf(Color(0xFF7F1D1D), Color(0xFFF87171))
 )[((i % 8) + 8) % 8]
 
+/** Static circuit-grid background (no continuous animation, so screens can go idle and save battery). */
 @Composable
 fun AppBackground(modifier: Modifier = Modifier, content: @Composable BoxScope.() -> Unit) {
-    val motion = LocalMotion.current
     val bg = MaterialTheme.colorScheme.background
     val accent = MaterialTheme.colorScheme.primary
-    val t = rememberInfiniteTransition(label = "circuit")
-    val phase by t.animateFloat(0f, 1f, infiniteRepeatable(tween(9000, easing = LinearEasing)), label = "phase")
-    val p = if (motion.enabled) phase else 0.3f
     Box(
         modifier
             .fillMaxSize()
@@ -117,10 +114,9 @@ fun AppBackground(modifier: Modifier = Modifier, content: @Composable BoxScope.(
                 while (x < size.width) { drawLine(line, Offset(x, 0f), Offset(x, size.height), 1f); x += step }
                 var y = 0f
                 while (y < size.height) { drawLine(line, Offset(0f, y), Offset(size.width, y), 1f); y += step }
-                // travelling circuit pulses
                 for (k in 0 until 6) {
                     val row = ((k * 3 + 1) * step) % size.height
-                    val px = ((p + k * 0.17f) % 1f) * size.width
+                    val px = ((0.13f + k * 0.17f) % 1f) * size.width
                     drawCircle(accent.copy(alpha = 0.35f), 3.dp.toPx(), Offset(px, row))
                     drawLine(Brush.horizontalGradient(listOf(Color.Transparent, accent.copy(alpha = 0.25f)), px - 120f, px), Offset(px - 120f, row), Offset(px, row), 2f)
                 }
@@ -401,11 +397,13 @@ private fun Modifier.radarLabel(ang: Double) = this.graphicsLayer {
 @Composable
 fun Medal(title: String, earned: Boolean, progress: Float, size: Dp = 64.dp) {
     val motion = LocalMotion.current
-    val t = rememberInfiniteTransition(label = "medal")
-    val spin by t.animateFloat(0f, 360f, infiniteRepeatable(tween(6000, easing = LinearEasing)), label = "spin")
+    val spin = if (earned && motion.full && motion.effects3d) {
+        val t = rememberInfiniteTransition(label = "medal")
+        t.animateFloat(0f, 360f, infiniteRepeatable(tween(6000, easing = LinearEasing)), label = "spin").value
+    } else 0f
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.width(size + 24.dp)) {
         Box(
-            Modifier.size(size).graphicsLayer { if (earned && motion.full && motion.effects3d) rotationY = spin; cameraDistance = 10f * density }
+            Modifier.size(size).graphicsLayer { rotationY = spin; cameraDistance = 10f * density }
                 .shadow(if (earned) 12.dp else 0.dp, CircleShape, spotColor = Brand.Gold).clip(CircleShape)
                 .background(
                     if (earned) Brush.radialGradient(listOf(Color(0xFFFFF1B8), Brand.Gold, Brand.GoldDeep))

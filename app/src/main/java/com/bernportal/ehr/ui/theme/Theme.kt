@@ -1,5 +1,6 @@
 package com.bernportal.ehr.ui.theme
 
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
@@ -84,6 +85,8 @@ fun EhrTheme(settings: Settings, content: @Composable () -> Unit) {
         LocalMotion provides Motion(settings.animation, settings.effects3d),
         LocalSettings provides settings
     ) {
-        MaterialTheme(colorScheme = scheme, typography = typography, content = content)
+        MaterialTheme(colorScheme = scheme, typography = typography) {
+            CompositionLocalProvider(LocalContentColor provides scheme.onBackground, content = content)
+        }
     }
 }

@@ -139,6 +139,7 @@ fun MainShell(vm: AppViewModel) {
         }) {
             Scaffold(
                 containerColor = Color.Transparent,
+                contentColor = MaterialTheme.colorScheme.onBackground,
                 topBar = {
                     TopAppBar(
                         title = {
