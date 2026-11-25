@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -275,7 +276,7 @@ fun IntroScreen(onDone: () -> Unit) {
         }
 
         // ---------- Boot loader ----------
-        Column(Modifier.align(Alignment.BottomCenter).padding(bottom = 48.dp).fillMaxWidth(0.72f), horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(Modifier.align(Alignment.BottomCenter).navigationBarsPadding().padding(bottom = 40.dp).fillMaxWidth(0.72f), horizontalAlignment = Alignment.CenterHorizontally) {
             val msgs = listOf("Initialising secure learning environment", "Loading 16 modules and 84 lessons", "Preparing simulated labs", "Calibrating AI tutor", "Encrypting your workspace")
             Text(msgs[(loader * (msgs.size - 1)).toInt().coerceIn(0, msgs.size - 1)] + "...", color = Brand.Muted, fontSize = 11.sp, fontFamily = FontFamily.Monospace)
             Spacer(Modifier.height(8.dp))
@@ -286,7 +287,7 @@ fun IntroScreen(onDone: () -> Unit) {
         TextButton(onClick = { finish() }, modifier = Modifier.align(Alignment.TopEnd).statusBarsPadding().padding(8.dp)) {
             Text("Skip", color = Brand.Soft)
         }
-        Text("Bernportal System Innovations", color = Brand.Muted.copy(alpha = 0.6f), fontSize = 10.sp, modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 18.dp))
+        Text("Bernportal System Innovations", color = Brand.Muted.copy(alpha = 0.6f), fontSize = 10.sp, modifier = Modifier.align(Alignment.BottomCenter).navigationBarsPadding().padding(bottom = 14.dp))
         if (w < 0f) Spacer(Modifier.size(0.dp))
     }
 }

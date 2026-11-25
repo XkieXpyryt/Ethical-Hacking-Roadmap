@@ -7,8 +7,11 @@ adb install -r "$APK" > $OUT/install.txt 2>&1
 adb shell settings put system screen_off_timeout 1800000
 adb logcat -c
 shot() { adb exec-out screencap -p > "$OUT/$1.png"; }
+N=0
 find_xy() {
-  adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1; adb pull /sdcard/ui.xml /tmp/ui.xml >/dev/null 2>&1
+  N=$((N+1)); rm -f /tmp/ui.xml; adb shell rm -f /sdcard/ui.xml
+  adb shell uiautomator dump /sdcard/ui.xml >> $OUT/dump_log.txt 2>&1; adb pull /sdcard/ui.xml /tmp/ui.xml >/dev/null 2>&1
+  [ -f /tmp/ui.xml ] && cp /tmp/ui.xml $OUT/dump_$N.xml
   python3 - "$1" <<'PY'
 import re, sys
 t = sys.argv[1]; x = open('/tmp/ui.xml', encoding='utf-8').read()
@@ -63,4 +66,13 @@ adb logcat -d > $OUT/logcat_full.txt
 grep -E "FATAL EXCEPTION|AndroidRuntime|Process: com.bernportal" -A25 $OUT/logcat_full.txt > $OUT/crashes.txt || true
 grep -i "com.bernportal" $OUT/logcat_full.txt | grep -iE " E |exception" | head -200 > $OUT/app_errors.txt || true
 tail -c 300000 $OUT/logcat_full.txt > $OUT/logcat_tail.txt; rm $OUT/logcat_full.txt
+# Release (R8-shrunk) APK launch check
+REL=$(find apks -name 'app-release.apk' | head -1)
+if [ -n "$REL" ]; then
+  adb install -r "$REL" > $OUT/install_release.txt 2>&1
+  adb logcat -c
+  adb shell am start -n com.bernportal.ehr/com.bernportal.ehr.MainActivity; sleep 9; shot 40_release_launch
+  adb shell input tap 540 1170; sleep 3; shot 41_release_after_tap
+  adb logcat -d | grep -E "FATAL EXCEPTION" -A30 > $OUT/release_crashes.txt || true
+fi
 echo "done" >> $OUT/steps.txt
