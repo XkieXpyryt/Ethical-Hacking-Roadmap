@@ -178,7 +178,7 @@ fun IntroScreen(onDone: () -> Unit) {
             val rainAlpha = (1f - seg(t, 2200f, 3600f)) * seg(t, 0f, 400f)
             if (rainAlpha > 0f && motion.enabled) drawIntoCanvas { cv ->
                 val paint = android.graphics.Paint().apply { isAntiAlias = true; textSize = 13.dp.toPx(); typeface = android.graphics.Typeface.MONOSPACE }
-                rain.forEachIndexed { k, (fx, ph, sp) ->
+                rain.forEachIndexed { k, (fx, ph, spd) ->
                     val x = fx * size.width
                     val head = ((ph + t / 1000f * spd * 0.6f) % 1.3f) * size.height
                     for (j in 0 until 10) {
