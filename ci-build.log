@@ -1,0 +1,157 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.9/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugBuildConfig
+> Task :app:generateDebugResValues
+> Task :app:checkDebugAarMetadata
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
+> Task :app:mergeDebugResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:parseDebugLocalResources
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:processDebugManifestForPackage
+> Task :app:javaPreCompileDebugUnitTest
+> Task :app:javaPreCompileDebug
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:mergeDebugShaders
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets
+> Task :app:desugarDebugFileDependencies
+> Task :app:compressDebugAssets
+> Task :app:mergeDebugStartupProfile
+> Task :app:mergeDebugJniLibFolders
+> Task :app:checkDebugDuplicateClasses
+> Task :app:mergeDebugNativeLibs
+> Task :app:processDebugResources
+> Task :app:mergeLibDexDebug
+
+> Task :app:stripDebugDebugSymbols
+Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so, libdatastore_shared_counter.so.
+
+> Task :app:validateSigningDebug
+> Task :app:writeDebugAppMetadata
+> Task :app:writeDebugSigningConfigVersions
+> Task :app:buildKotlinToolingMetadata
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :app:generateReleaseBuildConfig
+> Task :app:generateReleaseResValues
+> Task :app:checkReleaseAarMetadata
+> Task :app:mapReleaseSourceSetPaths
+> Task :app:generateReleaseResources
+> Task :app:packageReleaseResources
+> Task :app:parseReleaseLocalResources
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksRelease
+> Task :app:processReleaseMainManifest
+> Task :app:mergeReleaseResources
+> Task :app:processReleaseManifest
+> Task :app:processReleaseManifestForPackage
+> Task :app:javaPreCompileRelease
+> Task :app:extractProguardFiles
+> Task :app:kspDebugKotlin
+> Task :app:mergeReleaseJniLibFolders
+> Task :app:mergeReleaseNativeLibs
+> Task :app:processReleaseResources
+
+> Task :app:stripReleaseDebugSymbols
+Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so, libdatastore_shared_counter.so.
+
+> Task :app:extractReleaseNativeSymbolTables
+> Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
+> Task :app:checkReleaseDuplicateClasses
+> Task :app:mergeExtDexDebug
+> Task :app:mergeReleaseStartupProfile
+> Task :app:mergeReleaseArtProfile
+> Task :app:mergeReleaseShaders
+> Task :app:compileReleaseShaders NO-SOURCE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeReleaseAssets
+> Task :app:compressReleaseAssets
+> Task :app:extractReleaseVersionControlInfo
+> Task :app:processApplicationManifestReleaseForBundle
+> Task :app:collectReleaseDependencies
+> Task :app:bundleReleaseResources
+> Task :app:sdkReleaseDependencyData
+> Task :app:validateSigningRelease
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
+> Task :app:kspReleaseKotlin
+> Task :app:compileDebugKotlin
+> Task :app:compileReleaseKotlin
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/EhrRoot.kt:279:127 'val Icons.Filled.Help: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.Help.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Career.kt:108:83 'val Icons.Filled.OpenInNew: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.OpenInNew.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Home.kt:96:94 'val Icons.Filled.MenuBook: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.MenuBook.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Home.kt:137:43 'val Icons.Filled.TrendingDown: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.TrendingDown.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Learn.kt:413:65 'val Icons.Filled.ArrowForward: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.ArrowForward.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Learn.kt:509:91 'val Icons.Filled.Assignment: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.Assignment.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Practice.kt:51:101 'val Icons.Filled.AltRoute: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.AltRoute.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Practice.kt:277:59 'val Icons.Filled.ArrowForward: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.ArrowForward.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/ProgressScreens.kt:56:102 'val Icons.Filled.MenuBook: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.MenuBook.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Reference.kt:151:140 'val Icons.Filled.MenuBook: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.MenuBook.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/SettingsScreens.kt:152:43 'val Icons.Filled.Undo: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.Undo.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/SettingsScreens.kt:153:43 'val Icons.Filled.FactCheck: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.FactCheck.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/SettingsScreens.kt:154:43 'val Icons.Filled.Help: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.Help.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Tutor.kt:97:31 'val Icons.Filled.MenuBook: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.MenuBook.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Tutor.kt:193:145 'val Icons.Filled.NoteAdd: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.NoteAdd.
+
+> Task :app:compileDebugKotlin
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/EhrRoot.kt:279:127 'val Icons.Filled.Help: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.Help.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Career.kt:108:83 'val Icons.Filled.OpenInNew: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.OpenInNew.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Home.kt:96:94 'val Icons.Filled.MenuBook: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.MenuBook.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Home.kt:137:43 'val Icons.Filled.TrendingDown: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.TrendingDown.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Learn.kt:413:65 'val Icons.Filled.ArrowForward: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.ArrowForward.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Learn.kt:509:91 'val Icons.Filled.Assignment: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.Assignment.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Practice.kt:51:101 'val Icons.Filled.AltRoute: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.AltRoute.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Practice.kt:277:59 'val Icons.Filled.ArrowForward: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.ArrowForward.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/ProgressScreens.kt:56:102 'val Icons.Filled.MenuBook: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.MenuBook.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Reference.kt:151:140 'val Icons.Filled.MenuBook: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.MenuBook.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/SettingsScreens.kt:152:43 'val Icons.Filled.Undo: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.Undo.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/SettingsScreens.kt:153:43 'val Icons.Filled.FactCheck: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.FactCheck.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/SettingsScreens.kt:154:43 'val Icons.Filled.Help: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.Help.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Tutor.kt:97:31 'val Icons.Filled.MenuBook: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.MenuBook.
+w: file:///home/runner/work/Ethical-Hacking-Roadmap/Ethical-Hacking-Roadmap/app/src/main/java/com/bernportal/ehr/ui/screens/Tutor.kt:193:145 'val Icons.Filled.NoteAdd: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.NoteAdd.
+
+> Task :app:compileReleaseJavaWithJavac
+> Task :app:compileDebugJavaWithJavac
+> Task :app:processDebugJavaRes
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:dexBuilderDebug
+> Task :app:mergeDebugGlobalSynthetics
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:generateReleaseLintVitalReportModel
+> Task :app:mergeProjectDexDebug
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes
+> Task :app:mergeDebugJavaResource
+> Task :app:expandReleaseArtProfileWildcards
+> Task :app:testDebugUnitTest
+> Task :app:mergeReleaseGeneratedProguardFiles
+> Task :app:processReleaseJavaRes
+> Task :app:mergeReleaseJavaResource
+> Task :app:packageDebug
+> Task :app:createDebugApkListingFileRedirect
+> Task :app:assembleDebug
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:minifyReleaseWithR8
+> Task :app:lintVitalReportRelease
+> Task :app:lintVitalRelease
+> Task :app:compileReleaseArtProfile
+> Task :app:shrinkReleaseRes
+> Task :app:optimizeReleaseResources
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect
+> Task :app:assembleRelease
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1795676181558.json
+
+BUILD SUCCESSFUL in 2m 50s
+98 actionable tasks: 98 executed
