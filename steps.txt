@@ -1,0 +1,35 @@
+tap 'Next' at 930 2071
+tap 'IT student' at 578 999
+tap 'Next' at 930 2071
+tap 'Next' at 930 2071
+tap 'Next' at 930 2071
+tap 'Your name' at 204 534
+tap 'Start learning' at 584 1222
+tap 'Learn' at 0 0
+NOT FOUND: 'Computer Fundamentals'
+NOT FOUND: 'What Computers Do'
+NOT FOUND: 'Animated'
+NOT FOUND: 'Simulation'
+NOT FOUND: 'Explain this again'
+NOT FOUND: 'Labs'
+NOT FOUND: 'Linux Navigation Basics'
+NOT FOUND: 'I accept the lab rules'
+NOT FOUND: 'type a command'
+NOT FOUND: 'type a command'
+NOT FOUND: 'AI Tutor'
+NOT FOUND: 'Progress'
+NOT FOUND: 'Open menu'
+NOT FOUND: 'Practice Centre'
+NOT FOUND: 'Animated OSI model'
+NOT FOUND: 'Send a web request'
+NOT FOUND: 'CVSS v3.1 calculator'
+NOT FOUND: 'Open menu'
+NOT FOUND: 'Certificates'
+NOT FOUND: 'Open menu'
+NOT FOUND: 'Career Path'
+NOT FOUND: 'Open menu'
+tap 'Settings' at 942 1120
+NOT FOUND: 'Search everything'
+NOT FOUND: 'Open menu'
+NOT FOUND: 'Silverline Capstone'
+done

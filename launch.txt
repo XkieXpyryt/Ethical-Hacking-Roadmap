@@ -1,0 +1,7 @@
+Starting: Intent { cmp=com.bernportal.ehr.debug/com.bernportal.ehr.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.bernportal.ehr.debug/com.bernportal.ehr.MainActivity
+TotalTime: 3609
+WaitTime: 3610
+Complete

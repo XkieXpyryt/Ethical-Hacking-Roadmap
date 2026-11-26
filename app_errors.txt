@@ -1,0 +1,4 @@
+11-26 07:01:17.893   491  1775 E JobScheduler.Background: App com.bernportal.ehr.debug became active but still in NEVER bucket
+11-26 07:01:21.745   491   521 E JobScheduler.Background: App com.bernportal.ehr.debug became active but still in NEVER bucket
+11-26 07:01:49.301   491   521 E JobScheduler.Background: App com.bernportal.ehr.debug became active but still in NEVER bucket
+11-26 07:01:52.871   491   521 E JobScheduler.Background: App com.bernportal.ehr.debug became active but still in NEVER bucket
