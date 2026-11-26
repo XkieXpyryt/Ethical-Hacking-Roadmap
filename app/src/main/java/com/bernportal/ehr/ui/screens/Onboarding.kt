@@ -51,7 +51,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.bernportal.ehr.data.AppViewModel
 import com.bernportal.ehr.ui.components.AppBackground
-import com.bernportal.ehr.ui.components.Emblem3D
+import com.bernportal.ehr.ui.components.BrandOrbitAnimated
+import com.bernportal.ehr.ui.components.CubeTrail
+import com.bernportal.ehr.ui.components.ExtrudedText3D
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.composed
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.runtime.LaunchedEffect
 import com.bernportal.ehr.ui.components.GlassCard
 import com.bernportal.ehr.ui.components.Glossy3DIcon
 import com.bernportal.ehr.ui.components.paletteFor
@@ -93,15 +102,20 @@ fun OnboardingScreen(vm: AppViewModel, onDone: () -> Unit) {
                 ) {
                     when (page) {
                         0 -> {
-                            Spacer(Modifier.height(24.dp))
-                            Emblem3D(260.dp)
-                            Spacer(Modifier.height(16.dp))
-                            Text("Welcome to your cybersecurity academy", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.ExtraBold)
+                            val shown = pager.currentPage == 0
+                            Spacer(Modifier.height(8.dp))
+                            BrandOrbitAnimated(320.dp, Modifier.stagger(shown, 0))
+                            ExtrudedText3D("BERNPORTAL", 28.sp, Modifier.stagger(shown, 1), depth = 6, letterSpacing = 3.sp, flip3d = motion.effects3d)
+                            ExtrudedText3D("SYSTEM INNOVATIONS", 14.sp, Modifier.stagger(shown, 2), depth = 3, letterSpacing = 2.sp, flip3d = motion.effects3d,
+                                face = listOf(Color.White, Color(0xFF9CC9FF), Brand.CyberBlue), side = Color(0xFF0A1B4A))
+                            CubeTrail(Modifier.padding(vertical = 6.dp).stagger(shown, 3))
+                            Text("Welcome to your cybersecurity academy", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.ExtraBold,
+                                textAlign = TextAlign.Center, modifier = Modifier.stagger(shown, 4))
                             Spacer(Modifier.height(8.dp))
                             Text("From your first look inside a computer to professional ethical hacking: 16 modules, simulated labs, projects, an AI tutor, a capstone engagement and certificates - all main materials work offline.",
-                                style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center, modifier = Modifier.stagger(shown, 5))
                             Spacer(Modifier.height(16.dp))
-                            GlassCard(glow = Brand.Gold) {
+                            GlassCard(Modifier.stagger(shown, 6), glow = Brand.Gold) {
                                 Row(verticalAlignment = Alignment.CenterVertically) {
                                     Glossy3DIcon(Icons.Filled.Gavel, paletteFor(6), 44.dp)
                                     Spacer(Modifier.width(12.dp))
@@ -112,15 +126,15 @@ fun OnboardingScreen(vm: AppViewModel, onDone: () -> Unit) {
                         }
                         1 -> {
                             Header("What best describes you?", "We use this to recommend where to start. You can change it at any time.")
-                            LEVELS.forEachIndexed { i, l -> SelectCard(l, level == l, iconForLevel(i), paletteFor(i)) { level = l } }
+                            LEVELS.forEachIndexed { i, l -> Box(Modifier.stagger(pager.currentPage == 1, i)) { SelectCard(l, level == l, iconForLevel(i), paletteFor(i)) { level = l } } }
                         }
                         2 -> {
                             Header("What are your goals?", "Choose as many as you like.")
-                            GOALS.forEachIndexed { i, g -> SelectCard(g, g in goals, Icons.Filled.Flag, paletteFor(i + 2)) { goals = if (g in goals) goals - g else goals + g } }
+                            GOALS.forEachIndexed { i, g -> Box(Modifier.stagger(pager.currentPage == 2, i)) { SelectCard(g, g in goals, Icons.Filled.Flag, paletteFor(i + 2)) { goals = if (g in goals) goals - g else goals + g } } }
                         }
                         3 -> {
                             Header("Choose your pace", "Your daily target and study reminders adapt to this.")
-                            PACES.forEachIndexed { i, (p, m) -> SelectCard("$p  -  about $m min/day", pace == p, Icons.Filled.Speed, paletteFor(i + 4)) { pace = p; minutes = m.toFloat() } }
+                            PACES.forEachIndexed { i, (p, m) -> Box(Modifier.stagger(pager.currentPage == 3, i)) { SelectCard("$p  -  about $m min/day", pace == p, Icons.Filled.Speed, paletteFor(i + 4)) { pace = p; minutes = m.toFloat() } } }
                             Spacer(Modifier.height(12.dp))
                             Text("Daily study time: ${minutes.toInt()} minutes", style = MaterialTheme.typography.titleSmall)
                             Slider(minutes, { minutes = it }, valueRange = 10f..180f, steps = 16)
@@ -183,3 +197,23 @@ fun SelectCard(text: String, selected: Boolean, icon: androidx.compose.ui.graphi
     }
 }
 
+
+/**
+ * Staggered 3D entrance: when [visible] becomes true the element tilts in around Y, rises and fades in,
+ * delayed by [index] so a page's items cascade in one after another. Respects the motion and 3D settings.
+ */
+fun Modifier.stagger(visible: Boolean, index: Int): Modifier = composed {
+    val motion = LocalMotion.current
+    val p = remember { Animatable(if (motion.enabled) 0f else 1f) }
+    LaunchedEffect(visible) {
+        if (!motion.enabled) { p.snapTo(1f); return@LaunchedEffect }
+        if (visible) { p.snapTo(0f); kotlinx.coroutines.delay(80L * index); p.animateTo(1f, tween(motion.dur(520), easing = FastOutSlowInEasing)) }
+    }
+    graphicsLayer {
+        val v = p.value
+        alpha = v
+        translationY = (1 - v) * 40f * density
+        if (motion.effects3d) { rotationX = (1 - v) * 35f; rotationY = (1 - v) * -20f }
+        cameraDistance = 14f * density
+    }
+}

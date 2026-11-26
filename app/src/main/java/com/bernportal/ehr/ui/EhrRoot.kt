@@ -253,7 +253,7 @@ private fun AppDrawer(vm: AppViewModel, current: String, go: (String) -> Unit) {
     ModalDrawerSheet(drawerContainerColor = MaterialTheme.colorScheme.surface) {
         Column(Modifier.verticalScroll(rememberScrollState()).padding(horizontal = 12.dp)) {
             Row(Modifier.fillMaxWidth().padding(vertical = 16.dp), verticalAlignment = Alignment.CenterVertically) {
-                BrandImage(R.drawable.brand_emblem, 64.dp)
+                com.bernportal.ehr.ui.components.Emblem3D(72.dp)
                 Spacer(Modifier.width(10.dp))
                 Column {
                     Text("Bernportal System Innovations", style = MaterialTheme.typography.labelMedium, color = Brand.Gold)
@@ -264,19 +264,19 @@ private fun AppDrawer(vm: AppViewModel, current: String, go: (String) -> Unit) {
             HorizontalDivider()
             fun item(label: String, icon: ImageVector, route: String, img: Int? = null) = Triple(label, icon, route) to img
             val items = listOf(
-                item("Dashboard", Icons.Filled.Dashboard, "home"), item("Learning Roadmap", Icons.Filled.Route, "roadmap"),
-                item("All Courses", Icons.Filled.School, "learn", R.drawable.ic3d_learn)
+                item("Dashboard", Icons.Filled.Dashboard, "home"), item("Learning Roadmap", Icons.Filled.Route, "roadmap", R.drawable.icc_map),
+                item("All Courses", Icons.Filled.School, "learn", R.drawable.icc_book)
             )
             val rest = listOf(
-                item("Practice Centre", Icons.Filled.FitnessCenter, "practice"), item("Virtual Labs", Icons.Filled.Science, "labs?tab=0"),
+                item("Practice Centre", Icons.Filled.FitnessCenter, "practice", R.drawable.icc_globe), item("Virtual Labs", Icons.Filled.Science, "labs?tab=0"),
                 item("Projects", Icons.Filled.Construction, "labs?tab=1"), item("Challenge Arena", Icons.Filled.SportsMartialArts, "labs?tab=2"),
                 item("Silverline Capstone", Icons.Filled.Apartment, "capstone"), item("AI Tutor", Icons.Filled.SmartToy, "tutor", R.drawable.ic3d_support),
-                item("Notes & Bookmarks", Icons.Filled.EditNote, "notes", R.drawable.ic3d_notes), item("Revision Centre", Icons.Filled.Style, "revision"),
-                item("Toolkit", Icons.Filled.Build, "toolkit", R.drawable.ic3d_toolkit), item("Glossary", Icons.Filled.Translate, "glossary", R.drawable.ic3d_glossary),
+                item("Notes & Bookmarks", Icons.Filled.EditNote, "notes", R.drawable.icc_notes), item("Revision Centre", Icons.Filled.Style, "revision", R.drawable.icc_sync),
+                item("Toolkit", Icons.Filled.Build, "toolkit", R.drawable.icc_library), item("Glossary", Icons.Filled.Translate, "glossary", R.drawable.icc_dict),
                 item("Assessments", Icons.Filled.Quiz, "exams"), item("Report Builder", Icons.Filled.Description, "reports"),
                 item("Achievements", Icons.Filled.EmojiEvents, "achievements"), item("Certificates", Icons.Filled.WorkspacePremium, "certificates"),
                 item("Career Path", Icons.Filled.Work, "career", R.drawable.ic3d_career), item("Portfolio", Icons.Filled.Folder, "portfolio"),
-                item("Settings", Icons.Filled.Settings, "settings", R.drawable.ic3d_settings), item("Help & Support", Icons.Filled.Help, "help", R.drawable.ic3d_about)
+                item("Settings", Icons.Filled.Settings, "settings", R.drawable.icc_gear), item("Help & Support", Icons.Filled.Help, "help", R.drawable.icc_help)
             )
             @Composable fun Draw(entry: Pair<Triple<String, ImageVector, String>, Int?>) {
                 val (t, img) = entry

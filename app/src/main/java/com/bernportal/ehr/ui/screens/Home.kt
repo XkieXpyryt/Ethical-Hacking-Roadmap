@@ -152,7 +152,12 @@ fun HomeScreen() {
             FlowRow(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp), maxItemsInEachRow = 4) {
                 quick.forEachIndexed { i, (label, icon, r) ->
                     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.width(76.dp)) {
-                        Glossy3DIcon(icon, paletteFor(i), 58.dp, label) { nav.go(r) }
+                        val img = when (label) {
+                            "Resume lesson" -> R.drawable.icc_book; "Toolkit" -> R.drawable.icc_library; "Notes" -> R.drawable.icc_notes
+                            "Search" -> R.drawable.icc_search; "Glossary" -> R.drawable.icc_dict; else -> null
+                        }
+                        if (img != null) com.bernportal.ehr.ui.components.BrandIconButton(img, 58.dp, label) { nav.go(r) }
+                        else Glossy3DIcon(icon, paletteFor(i), 58.dp, label) { nav.go(r) }
                         Spacer(Modifier.height(4.dp))
                         Text(label, style = MaterialTheme.typography.labelSmall, maxLines = 1)
                     }

@@ -26,8 +26,10 @@ PY
 tap() { xy=$(find_xy "$1"); if [ -n "$xy" ]; then adb shell input tap $xy; echo "tap '$1' at $xy" >> $OUT/steps.txt; else echo "NOT FOUND: '$1'" >> $OUT/steps.txt; fi; sleep ${2:-2}; }
 swipe_up() { adb shell input swipe 540 1900 540 700 400; sleep 1.5; }
 
-adb shell am start -n $PKG/com.bernportal.ehr.MainActivity; sleep 1.2
-shot 01_intro_a; sleep 1.0; shot 02_intro_b; sleep 1.2; shot 03_intro_c; sleep 1.5; shot 04_intro_d; sleep 3
+# -W waits until the first frame is drawn, so the intro storyboard (about 9 s) is captured act by act
+adb shell am start -W -n $PKG/com.bernportal.ehr.MainActivity > $OUT/launch.txt 2>&1
+sleep 0.6; shot 01_intro_boot; sleep 0.9; shot 02_intro_emblem; sleep 0.9; shot 03_intro_orbit; sleep 0.9; shot 04_intro_company
+sleep 0.9; shot 04b_intro_title; sleep 0.9; shot 04c_intro_tagline; sleep 4
 shot 05_onboarding_welcome
 tap "Next"; shot 06_onboarding_level
 tap "IT student"; tap "Next"; shot 07_onboarding_goals
